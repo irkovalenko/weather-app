@@ -32,7 +32,7 @@ class WeatherService
             'temperature' => $weatherData['main']['temp'],
             'description' => $weatherData['weather'][0]['description'],
             'humidity' => $weatherData['main']['humidity'],
-            'message' => "The weather in {$city} is:",
+            'message' => "Found the following data :",
         ];
     }
 }
