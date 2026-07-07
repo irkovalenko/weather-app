@@ -14,11 +14,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <script src="{{ asset('js/app.js') }}" defer></script>
     @endif
 </head>
 
-<body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+<body class="bg-[#101930] text-white flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
     <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
         Weather App
     </header>
@@ -34,12 +33,24 @@
         @if ($error)
         <div class="alert error">{{ $error }}</div>
         @elseif ($weather)
-        <div class="card weather-card">
+        <div class="mt-6 p-4 bg-gray-800 rounded">
             <h2>{{ $weather['message'] }}</h2>
-            <p><strong>City:</strong> {{ $weather['city'] }}</p>
-            <p><strong>Temperature:</strong> {{ $weather['temperature'] }}°C</p>
-            <p><strong>Description:</strong> {{ $weather['description'] }}</p>
-            <p><strong>Humidity:</strong> {{ $weather['humidity'] }}%</p>
+            <div class="mt-6 items-center flex gap-2">
+                <x-lucide-map-pin class="w-6 h-6 text-violet-500" />
+                <p><strong>City:</strong> {{ $weather['city'] }}</p>
+            </div>
+            <div class="mt-6 items-center flex gap-2">
+                <x-lucide-thermometer-sun class="w-6 h-6 text-red-500" />
+                <p><strong>Temperature:</strong> {{ $weather['temperature'] }}°C</p>
+            </div>
+            <div class="mt-6 items-center flex gap-2">
+                <x-lucide-cloud class="w-6 h-6 text-gray-500" />
+                <p><strong>Description:</strong> {{ $weather['description'] }}</p>
+            </div>
+            <div class="mt-6 items-center flex gap-2">
+                <x-lucide-droplets class=" w-6 h-6 text-blue-500" />
+                <p><strong>Humidity:</strong> {{ $weather['humidity'] }}%</p>
+            </div>
         </div>
         @endif
     </div>
